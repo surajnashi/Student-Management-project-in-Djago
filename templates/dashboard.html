@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.timeshighereducation.com/student/sites/default/files/uppsala_university_1.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <a href="/create"><button>Insert</button></a>
+    
+    <table border="1" align="center">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Number</th>
+            <th>Cat</th>
+            <th>Images</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ x.name }}</td>
+            <td>{{ x.age }}</td>
+            <td>{{ x.number }}</td>
+            <td>{{ x.cat }}</td>
+            <td>{% if x.image %}<img src="{{ x.image.url }}" style="height: 10vh;">{% endif %}</td>
+            <td><a href="/edit/{{ x.id }}">Edit</a></td>
+            <td><a href="/delete/{{ x.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

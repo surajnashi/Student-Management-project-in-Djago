@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head> 
+<body>
+    <h1>Edit Form</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {% for x in data %}
+            <table border="1" align="center">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name" value="{{ x.name }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Age</td>
+                    <td><input type="number" name="age" value="{{ x.age }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Number</td>
+                    <td><input type="text" name="number" value="{{ x.number }}"></td>
+                </tr>
+
+                <tr>
+                    <td>Cat</td>
+                    <td><input type="text" name="cat" value="{{ x.cat }}"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        {% endfor %}
+    </form>
+</body>
+</html>
